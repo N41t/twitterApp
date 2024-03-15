@@ -5,10 +5,10 @@ import dev.simpleapp.twitter.twitterApp.security.model.UserRole;
 import dev.simpleapp.twitter.twitterApp.security.service.UserAccountService;
 import dev.simpleapp.twitter.twitterApp.security.service.UserRoleService;
 import dev.simpleapp.twitter.twitterApp.security.web.model.RegisterRequest;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Locale;
@@ -33,11 +33,8 @@ public class UserAccountController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerAccount(@RequestBody RegisterRequest registerRequest) {
+    public void registerAccount(@Valid @RequestBody RegisterRequest registerRequest) {
         log.info("Register request: {}", registerRequest);
-
-        Assert.hasLength(registerRequest.username(), "Username should not be null or empty");
-        Assert.hasLength(registerRequest.password(), "Password should not be null or empty");
 
         UserRole userRole = this.userRoleService
                 .findUserRole()
