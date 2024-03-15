@@ -19,9 +19,19 @@ create table identity.user_accounts
 
 --changeset MikhailBelozerov:create-identity-user_roles-table
 --comment create table identity.user_roles
-create table identity.user_accounts
+create table identity.user_roles
 (
     id        serial primary key,
     authority varchar(32) unique not null
 );
 --rollback drop table identity.user_roles;
+
+
+--changeset MikhailBelozerov:create-identity-user_accounts_roles-table
+--comment create table identity.user_accounts_roles
+create table identity.user_accounts_roles
+(
+    user_account_id integer not null,
+    user_role_id integer not null
+);
+--rollback drop table identity.user_accounts_roles;
