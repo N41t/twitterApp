@@ -1,4 +1,4 @@
-package dev.simpleapp.twitter.twitterApp.config;
+package dev.simpleapp.twitter.twitterApp.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
