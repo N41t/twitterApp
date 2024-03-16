@@ -1,7 +1,6 @@
 package dev.simpleapp.twitter.twitterApp.security.repository;
 
 import dev.simpleapp.twitter.twitterApp.security.model.UserAccount;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,6 +10,5 @@ public interface UserAccountRepository extends JpaRepository<UserAccount, Long> 
 
     boolean existsByUsername(String username);
 
-    @EntityGraph(attributePaths = "authorities")
     Optional<UserDetails> findByUsername(String username);
 }
