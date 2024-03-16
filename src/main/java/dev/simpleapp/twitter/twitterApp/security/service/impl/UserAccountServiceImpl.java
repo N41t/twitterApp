@@ -3,7 +3,6 @@ package dev.simpleapp.twitter.twitterApp.security.service.impl;
 import dev.simpleapp.twitter.twitterApp.security.model.UserAccount;
 import dev.simpleapp.twitter.twitterApp.security.repository.UserAccountRepository;
 import dev.simpleapp.twitter.twitterApp.security.service.UserAccountService;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -29,7 +28,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     @Override
-    public Optional<UserDetails> findUserByUsername(String username) {
+    public Optional<UserAccount> findUserByUsername(String username) {
         return this.userAccountRepository.findByUsername(username);
     }
 }
